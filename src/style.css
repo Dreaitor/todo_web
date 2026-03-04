@@ -1,0 +1,282 @@
+:root {
+  font-family: "Inter", "Segoe UI", system-ui, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  color: #0f172a;
+  background-color: #f1f5f9;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: radial-gradient(circle at top, #e2e8f0, #f8fafc);
+}
+
+#app {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 48px 20px 80px;
+}
+
+button,
+input {
+  font-family: inherit;
+}
+
+.app {
+  background: #ffffff;
+  border-radius: 24px;
+  padding: 32px;
+  box-shadow: 0 20px 60px rgba(15, 23, 42, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.app__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.app__eyebrow {
+  margin: 0 0 8px;
+  color: #64748b;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-size: 12px;
+}
+
+.app__title {
+  margin: 0;
+  font-size: 32px;
+}
+
+.toggle-all {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  color: #475569;
+}
+
+.toggle-all input {
+  width: 18px;
+  height: 18px;
+}
+
+.composer {
+  display: flex;
+  gap: 12px;
+  padding: 12px;
+  border-radius: 16px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+}
+
+.composer input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  font-size: 16px;
+  outline: none;
+}
+
+.composer button {
+  border: none;
+  background: #2563eb;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.composer button:hover {
+  background: #1d4ed8;
+}
+
+.todo-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.todo-item {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 16px;
+  align-items: center;
+  padding: 16px 18px;
+  border-radius: 16px;
+  border: 1px solid #e2e8f0;
+  background: #fff;
+}
+
+.todo-item--completed {
+  background: #f8fafc;
+  border-color: #e2e8f0;
+}
+
+.todo-item__check {
+  display: grid;
+  place-items: center;
+}
+
+.todo-item__check input {
+  width: 20px;
+  height: 20px;
+}
+
+.todo-item__content {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.todo-item__title {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: #0f172a;
+}
+
+.todo-item--completed .todo-item__title {
+  text-decoration: line-through;
+  color: #94a3b8;
+}
+
+.todo-item__meta {
+  font-size: 12px;
+  color: #94a3b8;
+}
+
+.todo-item__input {
+  width: 100%;
+  border-radius: 12px;
+  border: 1px solid #cbd5f5;
+  padding: 8px 12px;
+  font-size: 15px;
+}
+
+.todo-item__actions {
+  display: flex;
+  gap: 8px;
+}
+
+.todo-item__actions button {
+  border: none;
+  padding: 8px 14px;
+  border-radius: 10px;
+  background: #e2e8f0;
+  color: #1f2937;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.todo-item__actions button:hover {
+  background: #cbd5f5;
+}
+
+.todo-item__actions .ghost {
+  background: #f1f5f9;
+}
+
+.todo-item__actions .danger {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.todo-item__actions .danger:hover {
+  background: #fecaca;
+}
+
+.empty {
+  padding: 32px;
+  text-align: center;
+  color: #94a3b8;
+  border-radius: 16px;
+  border: 1px dashed #e2e8f0;
+}
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding-top: 12px;
+  border-top: 1px solid #e2e8f0;
+}
+
+.filters__count {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  color: #475569;
+}
+
+.filters__number {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.filters__buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.filters__buttons button {
+  border: none;
+  padding: 8px 16px;
+  border-radius: 12px;
+  background: #e2e8f0;
+  color: #334155;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.filters__buttons button.active {
+  background: #2563eb;
+  color: #fff;
+}
+
+.filters__clear {
+  border: none;
+  padding: 8px 16px;
+  border-radius: 12px;
+  background: #fef3c7;
+  color: #92400e;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.filters__clear:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+@media (max-width: 720px) {
+  .app__header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .todo-item {
+    grid-template-columns: auto 1fr;
+    grid-template-rows: auto auto;
+  }
+
+  .todo-item__actions {
+    grid-column: 1 / -1;
+    justify-content: flex-end;
+  }
+}
