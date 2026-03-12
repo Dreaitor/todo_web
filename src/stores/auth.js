@@ -1,0 +1,42 @@
+import { defineStore } from 'pinia'
+import { login as loginApi, register as registerApi } from '@/api/auth'
+import router from '@/router'
+
+export const useAuthStore = defineStore('auth', {
+  state: () => ({
+    token: localStorage.getItem('token') || '',
+    user: JSON.parse(localStorage.getItem('user') || 'null')
+  }),
+
+  getters: {
+    isLoggedIn: (state) => !!state.token,
+    username: (state) => state.user?.username || ''
+  },
+
+  actions: {
+    async login(form) {
+      const res = await loginApi(form)
+      this.token = res.data.token
+      this.user = {
+        userId: res.data.userId,
+        username: res.data.username
+      }
+      localStorage.setItem('token', this.token)
+      localStorage.setItem('user', JSON.stringify(this.user))
+      router.push('/')
+    },
+
+    async register(form) {
+      await registerApi(form)
+      router.push('/login')
+    },
+
+    logout() {
+      this.token = ''
+      this.user = null
+      localStorage.removeItem('token')
+      localStorage.removeItem('user')
+      router.push('/login')
+    }
+  }
+})
